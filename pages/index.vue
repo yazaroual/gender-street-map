@@ -1,13 +1,19 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <v-card>
-        <p>Hello</p>
-      </v-card>
-    </v-flex>
+    <GenderMap />
+    <v-card>
+      <MapData />
+    </v-card>
   </v-layout>
 </template>
 
 <script>
-export default {}
+import GenderMap from '@/components/GenderMap.vue'
+import MapData from '@/components/MapData.vue'
+export default {
+  components: {
+    GenderMap,
+    MapData
+  }
+}
 </script>
