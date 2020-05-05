@@ -18,8 +18,8 @@
             <vl-style-box>
               <vl-style-icon
                 src="_media/marker.png"
-                :scale="0.4"
-                :anchor="[0.5, 1]"
+                :scale="1"
+                :anchor="geolocPosition"
               ></vl-style-icon>
             </vl-style-box>
           </vl-feature>
@@ -48,13 +48,17 @@ export default {
     return {
       zoom: 14,
       rotation: 0,
+      center: [1.4210873, 43.602461],
       geolocPosition: undefined
     }
   },
-  computed: {
-    center() {
-      return this.geolocPosition
+  watch: {
+    center: {
+      deep: true,
+      handler(newVal, oldVal) {
+        this.$emit('positionChanged', this.center)
+      }
     }
-  }
+  } 
 }
 </script>
