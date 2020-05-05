@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
   data() {
     return {
@@ -56,9 +58,14 @@ export default {
     center: {
       deep: true,
       handler(newVal, oldVal) {
-        this.$emit('positionChanged', this.center)
+        this.changePosition(this.center)
       }
     }
-  } 
+  },
+  methods: {
+    changePosition: _.debounce(function(value) {
+      this.$emit('positionChanged', value)
+    }, 1000)
+  }
 }
 </script>
